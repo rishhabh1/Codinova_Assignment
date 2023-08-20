@@ -5,15 +5,13 @@ import ProductsListing from "./components/productsListing";
 function App() {
   const [cart, setCart] = useState([]);
 
-  const total = cart.reduce((acc, item) => acc + parseInt(item.price), 0);
-
-  console.log(total);
-
   return (
     <div className="wrapper">
-      <div className="cart_section">{/* <Cart /> */}</div>
+      <div className="cart_section">
+        <Cart cart={cart} setCart={setCart} />
+      </div>
       <div className="products_section">
-        <ProductsListing setCart={setCart} />
+        <ProductsListing setCart={setCart} cart={cart} />
       </div>
     </div>
   );
