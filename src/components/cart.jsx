@@ -61,10 +61,11 @@ export default function Cart(props) {
 
   return (
     <div className="cart_page">
-      <table>
+      <table >
         <thead>
-          <tr>
-            <td>{String_Constants.products}</td>
+          <tr >
+            <td className="del-btn"></td>
+            <td >{String_Constants.products}</td>
             <td>{String_Constants.price}</td>
             <td>{String_Constants.qty}</td>
             <td>{String_Constants.total}</td>
@@ -73,29 +74,30 @@ export default function Cart(props) {
         <tbody>
           {cart.length === 0 ? (
             <tr>
-              <td>{String_Constants.no_products}</td>
+              <td colSpan="5"><span className="no-prod">{String_Constants.no_products}</span></td>
             </tr>
           ) : (
             cart.map((item, index) => (
-              <tr key={index}>
+              <tr key={index} className="item_tr" >
+                <td className="del-btn">
+                  <button onClick={() => handleRemoveItem(index)}>
+                    X
+                  </button>
+                </td>
                 <td>{item.name}</td>
                 <td>{item.price}</td>
-                <td>
+                <td className="qty_num">
                   <button onClick={() => handleDecreaseQuantity(index)}>
                     -
                   </button>
-                  {item.quantity}
+                  <span >{item.quantity}</span>
                   <button onClick={() => handleIncreaseQuantity(index)}>
                     +
                   </button>
                 </td>
-                <td>${(item.price * item.quantity).toFixed(2)}</td>
+                <td>{(item.price * item.quantity).toFixed(2)} INR</td>
                 {/* <td>{item.total}</td> */}
-                <td>
-                  <button onClick={() => handleRemoveItem(index)}>
-                    Delete
-                  </button>
-                </td>
+
               </tr>
             ))
           )}
