@@ -2,9 +2,20 @@ import React from "react";
 import { PRODUCTS_LIST } from "./products";
 
 export default function ProductsListing(props) {
-  const { setCart } = props;
+  const { setCart, cart } = props;
   const addToCart = (product) => {
-    setCart((prevCart) => [...prevCart, product]);
+    const existingItem = cart.find((item) => item.name === product.name);
+
+    if (existingItem) {
+      const updatedCart = cart.map((item) =>
+        item.name === product.name
+          ? { ...item, quantity: item.quantity + 1 }
+          : item
+      );
+      setCart(updatedCart);
+    } else {
+      setCart((prevCart) => [...prevCart, { ...product, quantity: 1 }]);
+    }
   };
 
   return (
