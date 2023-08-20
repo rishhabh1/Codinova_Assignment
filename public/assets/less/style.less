@@ -3,8 +3,14 @@
 
   > div {
     width: 50%;
+    
+        background: #ebebeb;
     padding: 15px;
+    border-radius: 10px;
+    margin: 10px 7px;
+
   }
+
   
   .products_section {
     ul {
@@ -54,4 +60,78 @@
 
   .cart_section {
   }
+}
+
+table{
+  width: 100%;
+    border-collapse:separate; 
+  border-spacing: 0 1em;
+thead td {
+    font-weight: 700;
+}
+td{
+  width: 25%;
+}
+
+td.total{
+  text-align: right;
+}
+
+.item_tr {td{
+  background: #fff;
+    padding: 14px;
+}
+}
+.del-btn {
+    width: 10%;
+    button{
+      background-color: rgb(208, 27, 27);
+      color: #fff;
+          padding: 6px 9px;
+    border: none;
+    border-radius: 9px;
+    font-size: 14px;
+    cursor: pointer;
+    }
+}
+
+.no-prod {
+    padding: 20px;
+    background: #fff;
+    text-align: center;
+    font-size: 19px;
+    margin-top: 10px !important;
+    display: block;
+}
+
+
+.qty_num{padding-left:0px !important; span{
+  margin: 0 10px;
+ width: 25px;
+    height: 27px;
+    border: 1px solid #adadad;
+    display: inline-block;
+    text-align: center;
+    line-height: 26px;
+    border-radius: 5px;
+    vertical-align: sub;
+    
+}
+button{
+      display: inline-block;
+    vertical-align: text-top;
+    background: #5fa0de;
+    border: none;
+    font-size: 21px;
+    color: #fff;
+    border-radius: 6px;
+    width: 24px;
+    height: 26px;
+    line-height: 0;
+    cursor: pointer;
+}}
+.qty_num + td{
+  padding-left: 0 !important;
+
+}
 }
