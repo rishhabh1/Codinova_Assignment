@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { String_Constants } from "../utlits/constants/stringConstants";
+import CartDetail from "./cartDetail";
 
 export default function Cart(props) {
   const { cart, setCart } = props;
@@ -50,9 +51,7 @@ export default function Cart(props) {
 
 
 
-  const cancelbtn = () => {
-    setCart([])
-  }
+
 
 
   const [showCart, setShowCart] = useState(false)
@@ -131,13 +130,13 @@ export default function Cart(props) {
       </div>
 
       <div className="buttons">
-        <span onClick={cancelbtn}>CANCEL SALE</span>
-        <span onClick={(processbtn) => { setShowCart(true) }}>PROCESS SALE</span>
+        <span onClick={cancelbtn => { setCart([]) }}>CANCEL SALE</span>
+        <span onClick={processbtn => { setShowCart(true) }}>PROCESS SALE</span>
 
       </div>
 
 
-      {showCart && "hey"}
+      {showCart && <CartDetail cart={cart} calculateGrandTotal={calculateGrandTotal} vatPercentage={vatPercentage} discountPercentage={discountPercentage} />}
     </div >
   );
 }
