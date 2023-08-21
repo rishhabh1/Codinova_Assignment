@@ -60,7 +60,9 @@ export default function Cart(props) {
   // const
 
   return (
+    <>
     <div className="cart_page">
+        <div className="cart_data">
       <table >
         <thead>
           <tr >
@@ -103,42 +105,56 @@ export default function Cart(props) {
           )}
         </tbody>
       </table>
+        </div>
+        <div className="cart_total">
+          <div>
+            <div><span>Subtotal</span><span>VAT</span>
+              <span>Discount</span>
+              <span>Total</span></div>
 
+            <div>
       <div className="cart-subtotal">
-        Subtotal: ${calculateSubtotal().toFixed(2)}
-      </div>
-
-      <div className="cart-total-quantity">
-        Total Quantity: {calculateTotalQuantity()}
+                <span>{calculateSubtotal().toFixed(2)} INR</span>
+                <span> {calculateTotalQuantity()} Items</span>
       </div>
       <div className="cart-discount">
+                <div className="percentage-input">
         <input
           type="number"
-          value={discountPercentage}
+                    value={discountPercentage}
           onChange={(e) => setDiscountPercentage(e.target.value)}
+
         />
-        % Discount: ${calculateDiscount().toFixed(2)}
+                </div>
+                {calculateDiscount().toFixed(2)} INR
       </div>
       <div className="cart-vat">
+                <div className="percentage-input">
         <input
           type="number"
           value={vatPercentage}
           onChange={(e) => setVatPercentage(e.target.value)}
         />
-        % VAT: ${calculateVAT().toFixed(2)}
+                </div>
+                {calculateVAT().toFixed(2)} INR
       </div>
       <div className="cart-grand-total">
-        Grand Total: ${calculateGrandTotal().toFixed(2)}
+                {calculateGrandTotal().toFixed(2)} INR
       </div>
-
+            </div>
+          </div>
       <div className="buttons">
         <span onClick={cancelbtn => { setCart([]) }}>CANCEL SALE</span>
         <span onClick={processbtn => { setShowCart(true) }}>PROCESS SALE</span>
 
       </div>
 
+        </div>
 
-      {showCart && <CartDetail cart={cart} calculateGrandTotal={calculateGrandTotal} vatPercentage={vatPercentage} discountPercentage={discountPercentage} />}
+
+
     </div >
+      {showCart && <CartDetail setShowCart={setShowCart} cart={cart} calculateGrandTotal={calculateGrandTotal} vatPercentage={vatPercentage} discountPercentage={discountPercentage} calculateTotalQuantity={calculateTotalQuantity} />}
+    </>
   );
 }
